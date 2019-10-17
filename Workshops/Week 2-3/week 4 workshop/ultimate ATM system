@@ -1,0 +1,35 @@
+interface ATM (
+
+public void readCard()
+
+public void userInputKeypad()
+
+return userInputKeypad;
+
+public void userInputSideButtons()
+
+return userInputSideButtons;
+
+public void contactBank()
+
+return contactBank;
+
+public void showBalance()
+
+public void withdrawalAmount()
+{
+	public void checkAccountBalance()
+
+	return checkAccountBalance;
+
+	public void checkMachineBalance()
+
+	return checkMachineBalance;
+}
+return withdrawalAmount;
+
+public void contactBank()
+{
+updateBank()
+}
+)
