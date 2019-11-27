@@ -1,5 +1,17 @@
 import tkinter as tk
 import os, sys
+import requests
+import json
+from urllib.request import urlopen
+
+city = skye
+url = urlopen('http://api.openweathermap.org/data/2.5/weather?q={}&appid=2e535070ac9219e3c58f19ac7227c197&q='.format(city)).read()
+url = json.loads(url)
+data = url['weather']
+data = data[0]
+
+weather = data['main']
+
 root = tk.Tk()
 weather = tk.PhotoImage(file=os.path.join(sys.path[0], 'insert-picture-here.gif'))
 
@@ -35,7 +47,7 @@ tk.Label(date_frame, text="Enter Date Here", bg="black", fg="white", font=('Helv
 tk.Label(time_frame, text="Time: ", bg="black", fg="red", font=('Helvetica', 18, 'bold')).pack(side='left')
 tk.Label(time_frame, text="Enter Time Here", bg="black", fg="white", font=('Helvetica', 14, 'bold')).pack(side='left')
 tk.Label(overview_frame, text="Overview: ", bg="black", fg="red", font=('Helvetica', 18, 'bold')).pack(side='left')
-tk.Label(overview_frame, text="Enter Weather Overview Here", bg="black", fg="white", font=('Helvetica', 14, 'bold')).pack(side='left')
+tk.Label(overview_frame, text=weather, bg="black", fg="white", font=('Helvetica', 14, 'bold')).pack(side='left')
 tk.Label(photo_frame, image=weather).pack()
 
 location_frame.pack(fill='x')
