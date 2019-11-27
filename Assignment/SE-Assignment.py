@@ -4,7 +4,7 @@ import requests
 import json
 from urllib.request import urlopen
 
-city = skye
+city = 'skye'
 url = urlopen('http://api.openweathermap.org/data/2.5/weather?q={}&appid=2e535070ac9219e3c58f19ac7227c197&q='.format(city)).read()
 url = json.loads(url)
 data = url['weather']
