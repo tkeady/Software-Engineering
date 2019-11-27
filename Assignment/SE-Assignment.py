@@ -4,6 +4,16 @@ import requests
 import json
 from urllib.request import urlopen
 
+url = urlopen('http://api.sportradar.us/formula1/trial/v2/en/sport_events/sr:stage:432275/summary.json?api_key=wb825w3qegqenjt95ue3muut').read()
+url = json.loads(url)
+data = url['stage']
+data = data['stages']
+data = data[4]
+
+datetime = data['scheduled']
+
+date, time = datetime.split('T')
+
 city = 'skye'
 url = urlopen('http://api.openweathermap.org/data/2.5/weather?q={}&appid=2e535070ac9219e3c58f19ac7227c197&q='.format(city)).read()
 url = json.loads(url)
@@ -43,9 +53,9 @@ tk.Label(top_left_frame, text="Next Race", bg="black", fg="red", font=('Helvetic
 tk.Label(location_frame, text="Location: ", bg="black", fg="red", font=('Helvetica', 18, 'bold')).pack(side='left')
 tk.Label(location_frame, text="Enter Location Here", bg="black", fg="white", font=('Helvetica', 14, 'bold')).pack(side='left')
 tk.Label(date_frame, text="Date: ", bg="black", fg="red", font=('Helvetica', 18, 'bold')).pack(side='left')
-tk.Label(date_frame, text="Enter Date Here", bg="black", fg="white", font=('Helvetica', 14, 'bold')).pack(side='left')
+tk.Label(date_frame, text=date, bg="black", fg="white", font=('Helvetica', 14, 'bold')).pack(side='left')
 tk.Label(time_frame, text="Time: ", bg="black", fg="red", font=('Helvetica', 18, 'bold')).pack(side='left')
-tk.Label(time_frame, text="Enter Time Here", bg="black", fg="white", font=('Helvetica', 14, 'bold')).pack(side='left')
+tk.Label(time_frame, text=time, bg="black", fg="white", font=('Helvetica', 14, 'bold')).pack(side='left')
 tk.Label(overview_frame, text="Overview: ", bg="black", fg="red", font=('Helvetica', 18, 'bold')).pack(side='left')
 tk.Label(overview_frame, text=weather, bg="black", fg="white", font=('Helvetica', 14, 'bold')).pack(side='left')
 tk.Label(photo_frame, image=weatherpic).pack()
